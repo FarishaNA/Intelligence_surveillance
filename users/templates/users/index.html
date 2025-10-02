@@ -1,211 +1,303 @@
-<!--
-Author: W3layouts
-Author URL: http://w3layouts.com
--->
-<!doctype html>
-<html lang="zxx">
-
+<!DOCTYPE html>
+<html lang="en">
 <head>
-  <!-- Required meta tags -->
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="keywords" content="Seog Responsive web template, Bootstrap Web Templates" />
-  <title>intelligentSurveillance</title>
-  <link
-    href="//fonts.googleapis.com/css2?family=Nunito:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300&display=swap"
-    rel="stylesheet">
-  <!-- Template CSS -->
-  <link rel="stylesheet" href="/static/css/style-starter.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Intelligence Surveillance - AI-Powered Content Moderation</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Navigation */
+        nav {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            padding: 1.5rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            color: white;
+            font-size: 1.5rem;
+            font-weight: bold;
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: opacity 0.3s;
+        }
+
+        .nav-links a:hover {
+            opacity: 0.8;
+        }
+
+        /* Hero Section */
+        .hero {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 4rem 2rem;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            text-align: center;
+            color: white;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+            animation: fadeInUp 0.8s ease;
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            margin-bottom: 2.5rem;
+            opacity: 0.95;
+            animation: fadeInUp 0.8s ease 0.2s both;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            animation: fadeInUp 0.8s ease 0.4s both;
+        }
+
+        .btn {
+            padding: 1rem 2.5rem;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn-primary {
+            background: white;
+            color: #667eea;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: white;
+            border: 2px solid white;
+        }
+
+        .btn-secondary:hover {
+            background: white;
+            color: #667eea;
+            transform: translateY(-3px);
+        }
+
+        /* Features Section */
+        .features {
+            background: white;
+            padding: 5rem 2rem;
+        }
+
+        .features-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .features h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            color: #333;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .feature-card {
+            padding: 2rem;
+            background: #f8f9fa;
+            border-radius: 15px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .feature-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .feature-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: #667eea;
+        }
+
+        .feature-card p {
+            color: #666;
+            line-height: 1.6;
+        }
+
+        /* Footer */
+        footer {
+            background: #2d3748;
+            color: white;
+            text-align: center;
+            padding: 2rem;
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero p {
+                font-size: 1.1rem;
+            }
+
+            .nav-links {
+                gap: 1rem;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .btn {
+                width: 100%;
+                max-width: 300px;
+            }
+        }
+    </style>
 </head>
 <body>
-  <!--/header-w3l-->
-  <div class="header-w3l">
-    <!-- header -->
-    <header id="site-header" class="fixed-top">
-      <div class="container">
-        <nav class="navbar navbar-expand-lg stroke">
-          <a class="navbar-brand" href="/">
-            Intelligent Surveillance
-          </a>
-          <!-- if logo is image enable this
-            <a class="navbar-brand" href="#/">
-                <img src="image-path" alt="Your logo" title="Your logo" style="height:35px;" />
-            </a> -->
-          <button class="navbar-toggler  collapsed bg-gradient" type="button" data-toggle="collapse"
-            data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false"
-            aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon fa icon-expand fa-bars"></span>
-            <span class="navbar-toggler-icon fa icon-close fa-times"></span>
-            </span>
-          </button>
-
-          <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
-            <ul class="navbar-nav ml-lg-auto">
-              <li class="nav-item active">
-                <a class="nav-link" href="/">Home</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="/sfReg">Registration</a>
-              </li>
-
-              <li class="nav-item">
-                <a class="nav-link" href="/login">LogIn</a>
-              </li>
-              <li class="search-bar ml-lg-3 mr-lg-5 mt-lg-0 mt-4">
-              </li>
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <a href="/" class="logo">🛡️ Intelligence Surveillance</a>
+            <ul class="nav-links">
+                <li><a href="/">Home</a></li>
+                <li><a href="/signup">Sign Up</a></li>
+                <li><a href="/login">Login</a></li>
             </ul>
-          </div>
-          <!-- toggle switch for light and dark theme -->
-          <div class="mobile-position">
-            <nav class="navigation">
-              <div class="theme-switch-wrapper">
-                <label class="theme-switch" for="checkbox">
-                  <input type="checkbox" id="checkbox">
-                  <div class="mode-container">
-                    <i class="gg-sun"></i>
-                    <i class="gg-moon"></i>
-                  </div>
-                </label>
-              </div>
-            </nav>
-          </div>
-          <!-- //toggle switch for light and dark theme -->
-        </nav>
-      </div>
-    </header>
-    <!-- //header -->
-  </div>
-  <!--//header-w3l-->
-  <!--/w3l-banner-content-->
-  <div class="w3l-banner-content">
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-6 bannerhny-info pr-lg-5">
-          <h3 class="mb-4">Expect Great Things from the <span class="w3sub-color">
-            </span>.</h3>
-          <div class="separatorhny"></div>
-          <p class="pr-lg-5 mt-md-4 mt-3">
-          </p>
         </div>
-        <div class="col-lg-6 bannerhny-info-img mt-lg-0 mt-5 pl-lg-5">
-          <img src="/static/images/pic-1.png" alt="" class="img-fluid">
-        </div>
-      </div>
-    </div>
-  </div>
-  <!--//w3l-banner-content-->
-  <!--/w3l-content-1-->
+    </nav>
 
-  <!--//w3l-content-1-->
-  <!-- /w3l-content-2-->
-  <!-- //Thank-section -->
-  <!-- footer -->
-  <footer class="w3l-footer-29-main">
-    <div class="footer-29-w3l py-5">
-      <div class="container py-lg-5 py-md-3">
-        <div class="w3l-footer-texthny-inf text-center">
-          <h6 class="foot-sub-title mb-1">LET’S WORK TOGETHER</h6>
-          <h4><a href="mailto:seogexample@mail.com" class="mail">Seogexample@mail.com</a></h4>
-          <div class="main-social-footer-29 mt-4 mb-lg-5 mb-4">
-            <a href="#facebook" class="facebook"><span class="fab fa-facebook-f"></span></a>
-            <a href="#twitter" class="twitter"><span class="fab fa-twitter"></span></a>
-            <a href="#instagram" class="instagram"><span class="fab fa-instagram"></span></a>
-            <a href="#linkedin" class="linkedin"><span class="fab fa-linkedin-in"></span></a>
-          </div>
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Safe Social Media for Everyone</h1>
+            <p>AI-powered content moderation that keeps your community safe, respectful, and enjoyable. Automatically detect and filter harmful content in real-time.</p>
+            <div class="cta-buttons">
+                <a href="/signup" class="btn btn-primary">Get Started</a>
+                <a href="#features" class="btn btn-secondary">Learn More</a>
+            </div>
         </div>
-      </div>
-    </div>
-    <!-- //footer -->
-    <!-- copyright -->
-    <section class="w3l-copyright">
-      <div class="container">
-        <div class="row bottom-copies">
-          <p class="col-lg-8 copy-footer-29">© 2020 Seog. All rights reserved. Design by <a
-              href="https://w3layouts.com/" target="_blank">
-              W3Layouts</a></p>
-          <div class="col-lg-4 footer-list-29">
-            <ul class="d-flex text-lg-right">
-              <li><a href="#careers"> Careers</a></li>
-              <li class="mx-lg-5 mx-md-4 mx-3"><a href="#privacymy-lg-0 my-4">Privacy Policy</a></li>
-              <li><a href="contact.html">Contact Us</a></li>
-            </ul>
-          </div>
-
-        </div>
-      </div>
     </section>
-    <!-- move top -->
-    <button onclick="topFunction()" id="movetop" title="Go to top">
-      &#10548;
-    </button>
-    <script>
-      // When the user scrolls down 20px from the top of the document, show the button
-      window.onscroll = function () {
-        scrollFunction()
-      };
 
-      function scrollFunction() {
-        if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
-          document.getElementById("movetop").style.display = "block";
-        } else {
-          document.getElementById("movetop").style.display = "none";
-        }
-      }
+    <!-- Features Section -->
+    <section class="features" id="features">
+        <div class="features-container">
+            <h2>Why Choose Us?</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">🤖</div>
+                    <h3>AI-Powered Detection</h3>
+                    <p>Advanced machine learning models automatically detect toxic, abusive, and harmful content across text, images, and videos.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">⚡</div>
+                    <h3>Real-Time Moderation</h3>
+                    <p>Content is analyzed instantly as it's posted. Harmful content is flagged within seconds, keeping your community safe.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🌍</div>
+                    <h3>Multi-Language Support</h3>
+                    <p>Our AI understands context in multiple languages, detecting harmful content regardless of the language used.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🎯</div>
+                    <h3>Context-Aware</h3>
+                    <p>Smart algorithms understand context and slang, reducing false positives while catching actual threats.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">📊</div>
+                    <h3>Admin Dashboard</h3>
+                    <p>Powerful moderation tools give admins full control with detailed analytics and review queues.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🔒</div>
+                    <h3>Privacy First</h3>
+                    <p>Your data is encrypted and secure. We never share user information with third parties.</p>
+                </div>
+            </div>
+        </div>
+    </section>
 
-      // When the user clicks on the button, scroll to the top of the document
-      function topFunction() {
-        document.body.scrollTop = 0;
-        document.documentElement.scrollTop = 0;
-      }
-    </script>
-    <!-- /move top -->
-  </footer>
-  <!--//footer-->
-  <!-- Template JavaScript -->
-  <script src="/static/js/jquery-3.3.1.min.js"></script>
-  <script src="/static/js/theme-change.js"></script>
-  <!-- disable body scroll which navbar is in active -->
-  <script>
-    $(function () {
-      $('.navbar-toggler').click(function () {
-        $('body').toggleClass('noscroll');
-      })
-    });
-  </script>
-  <!-- disable body scroll which navbar is in active -->
-
-  <!--/MENU-JS-->
-  <script>
-    $(window).on("scroll", function () {
-      var scroll = $(window).scrollTop();
-
-      if (scroll >= 80) {
-        $("#site-header").addClass("nav-fixed");
-      } else {
-        $("#site-header").removeClass("nav-fixed");
-      }
-    });
-
-    //Main navigation Active Class Add Remove
-    $(".navbar-toggler").on("click", function () {
-      $("header").toggleClass("active");
-    });
-    $(document).on("ready", function () {
-      if ($(window).width() > 991) {
-        $("header").removeClass("active");
-      }
-      $(window).on("resize", function () {
-        if ($(window).width() > 991) {
-          $("header").removeClass("active");
-        }
-      });
-    });
-  </script>
-  <!--//MENU-JS-->
-
-
-  <script src="/static/js/bootstrap.min.js"></script>
-
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2025 Intelligence Surveillance. All rights reserved.</p>
+        <p>Built with Django & AI for safer online communities.</p>
+    </footer>
 </body>
-
 </html>
