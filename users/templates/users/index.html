@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Intelligence Surveillance - AI-Powered Content Moderation</title>
+    <title>Intelligence Surveillance - Safe Communities</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
@@ -12,233 +13,539 @@
         }
 
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: #0f0f23;
+            color: #fff;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* Organic background blobs */
+        .bg-blob {
+            position: fixed;
+            border-radius: 50%;
+            filter: blur(120px);
+            opacity: 0.15;
+            z-index: 0;
+            animation: blob-move 20s ease-in-out infinite;
+        }
+
+        .blob-1 {
+            width: 600px;
+            height: 600px;
+            background: #ff6b9d;
+            top: -200px;
+            right: -100px;
+        }
+
+        .blob-2 {
+            width: 500px;
+            height: 500px;
+            background: #4dabf7;
+            bottom: -150px;
+            left: -100px;
+            animation-delay: 2s;
+        }
+
+        .blob-3 {
+            width: 400px;
+            height: 400px;
+            background: #ffd93d;
+            top: 50%;
+            left: 50%;
+            animation-delay: 4s;
         }
 
         /* Navigation */
         nav {
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
-            padding: 1.5rem 0;
-            position: sticky;
-            top: 0;
+            position: relative;
             z-index: 100;
+            padding: 1.5rem 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
         }
 
         .nav-container {
-            max-width: 1200px;
+            max-width: 1300px;
             margin: 0 auto;
-            padding: 0 2rem;
+            padding: 0 3rem;
             display: flex;
             justify-content: space-between;
             align-items: center;
         }
 
         .logo {
-            color: white;
-            font-size: 1.5rem;
-            font-weight: bold;
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: #fff;
             text-decoration: none;
-        }
-
-        .nav-links {
             display: flex;
-            gap: 2rem;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .logo-icon {
+            width: 32px;
+            height: 32px;
+            background: linear-gradient(135deg, #ff6b9d, #ff8fab);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+        }
+
+        .nav-menu {
+            display: flex;
+            gap: 2.5rem;
             list-style: none;
+            align-items: center;
         }
 
-        .nav-links a {
-            color: white;
+        .nav-menu a {
+            color: rgba(255, 255, 255, 0.7);
             text-decoration: none;
+            font-size: 0.95rem;
             font-weight: 500;
-            transition: opacity 0.3s;
+            transition: color 0.3s;
         }
 
-        .nav-links a:hover {
-            opacity: 0.8;
+        .nav-menu a:hover {
+            color: #fff;
+        }
+
+        .nav-cta {
+            background: #fff;
+            color: #0f0f23;
+            padding: 0.7rem 1.8rem;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: all 0.3s;
+        }
+
+        .nav-cta:hover {
+            background: #ff6b9d;
+            color: #fff;
+            transform: translateY(-2px);
         }
 
         /* Hero Section */
         .hero {
-            flex: 1;
-            display: flex;
+            position: relative;
+            z-index: 1;
+            max-width: 1300px;
+            margin: 0 auto;
+            padding: 8rem 3rem 6rem;
+            display: grid;
+            grid-template-columns: 1.1fr 0.9fr;
+            gap: 6rem;
             align-items: center;
-            justify-content: center;
-            padding: 4rem 2rem;
         }
 
-        .hero-content {
-            max-width: 800px;
-            text-align: center;
-            color: white;
-        }
-
-        .hero h1 {
-            font-size: 3.5rem;
+        .hero-content h1 {
+            font-size: 4.5rem;
+            font-weight: 800;
+            line-height: 1.1;
             margin-bottom: 1.5rem;
-            animation: fadeInUp 0.8s ease;
+            letter-spacing: -0.03em;
         }
 
-        .hero p {
-            font-size: 1.3rem;
+        .gradient-text {
+            background: linear-gradient(135deg, #ff6b9d 0%, #4dabf7 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-content p {
+            font-size: 1.2rem;
+            line-height: 1.7;
+            color: rgba(255, 255, 255, 0.7);
             margin-bottom: 2.5rem;
-            opacity: 0.95;
-            animation: fadeInUp 0.8s ease 0.2s both;
+            max-width: 540px;
         }
 
-        .cta-buttons {
+        .cta-group {
             display: flex;
-            gap: 1.5rem;
-            justify-content: center;
-            flex-wrap: wrap;
-            animation: fadeInUp 0.8s ease 0.4s both;
+            gap: 1rem;
+            align-items: center;
         }
 
         .btn {
-            padding: 1rem 2.5rem;
-            border: none;
-            border-radius: 50px;
-            font-size: 1.1rem;
+            padding: 1rem 2rem;
+            border-radius: 10px;
             font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s ease;
+            font-size: 1rem;
             text-decoration: none;
-            display: inline-block;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
         }
 
         .btn-primary {
-            background: white;
-            color: #667eea;
+            background: linear-gradient(135deg, #ff6b9d, #ff8fab);
+            color: #fff;
+            box-shadow: 0 10px 30px rgba(255, 107, 157, 0.3);
         }
 
         .btn-primary:hover {
             transform: translateY(-3px);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 15px 40px rgba(255, 107, 157, 0.4);
         }
 
         .btn-secondary {
-            background: transparent;
-            color: white;
-            border: 2px solid white;
+            background: rgba(255, 255, 255, 0.05);
+            color: #fff;
+            border: 1px solid rgba(255, 255, 255, 0.1);
         }
 
         .btn-secondary:hover {
-            background: white;
-            color: #667eea;
-            transform: translateY(-3px);
+            background: rgba(255, 255, 255, 0.1);
+            border-color: rgba(255, 255, 255, 0.2);
         }
 
-        /* Features Section */
-        .features {
-            background: white;
-            padding: 5rem 2rem;
+        .stats {
+            display: flex;
+            gap: 3rem;
+            margin-top: 4rem;
         }
 
-        .features-container {
-            max-width: 1200px;
-            margin: 0 auto;
+        .stat-item {
+            display: flex;
+            flex-direction: column;
         }
 
-        .features h2 {
-            text-align: center;
+        .stat-number {
             font-size: 2.5rem;
-            margin-bottom: 3rem;
-            color: #333;
+            font-weight: 800;
+            background: linear-gradient(135deg, #fff, rgba(255, 255, 255, 0.6));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
 
-        .features-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
+        .stat-label {
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.5);
+            margin-top: 0.3rem;
         }
 
-        .feature-card {
-            padding: 2rem;
-            background: #f8f9fa;
-            border-radius: 15px;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        /* 3D Illustration Area */
+        .illustration {
+            position: relative;
+            height: 650px;
         }
 
-        .feature-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        /* Mockup Cards */
+        .mockup-card {
+            position: absolute;
+            background: #1a1a2e;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 16px;
+            padding: 1.5rem;
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(10px);
         }
 
-        .feature-icon {
-            font-size: 3rem;
-            margin-bottom: 1rem;
+        .card-main {
+            width: 360px;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 5;
+            animation: float-main 6s ease-in-out infinite;
         }
 
-        .feature-card h3 {
+        .post-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.2rem;
+        }
+
+        .user-avatar {
+            width: 48px;
+            height: 48px;
+            border-radius: 12px;
+            background: linear-gradient(135deg, #4dabf7, #339af0);
+            display: flex;
+            align-items: center;
+            justify-content: center;
             font-size: 1.5rem;
+        }
+
+        .user-details h4 {
+            font-size: 1rem;
+            font-weight: 600;
+            color: #fff;
+            margin-bottom: 0.2rem;
+        }
+
+        .user-details span {
+            font-size: 0.85rem;
+            color: rgba(255, 255, 255, 0.4);
+        }
+
+        .post-body {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 12px;
+            padding: 1.2rem;
             margin-bottom: 1rem;
-            color: #667eea;
         }
 
-        .feature-card p {
-            color: #666;
+        .post-text {
+            color: rgba(255, 255, 255, 0.8);
             line-height: 1.6;
+            font-size: 0.95rem;
+            margin-bottom: 1rem;
         }
 
-        /* Footer */
-        footer {
-            background: #2d3748;
-            color: white;
-            text-align: center;
-            padding: 2rem;
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
         }
+
+        .badge-safe {
+            background: rgba(81, 207, 102, 0.15);
+            color: #51cf66;
+            border: 1px solid rgba(81, 207, 102, 0.3);
+        }
+
+        .badge-warning {
+            background: rgba(255, 107, 157, 0.15);
+            color: #ff6b9d;
+            border: 1px solid rgba(255, 107, 157, 0.3);
+        }
+
+        .post-actions {
+            display: flex;
+            gap: 1.5rem;
+            padding-top: 1rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .action-btn {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 0.9rem;
+            transition: color 0.3s;
+        }
+
+        .action-btn:hover {
+            color: #fff;
+        }
+
+        /* Floating mini cards */
+        .mini-card {
+            position: absolute;
+            background: #1a1a2e;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 12px;
+            padding: 1rem;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
+            animation: float-slow 5s ease-in-out infinite;
+        }
+
+        .ai-badge {
+            top: 15%;
+            right: 5%;
+            display: flex;
+            align-items: center;
+            gap: 0.7rem;
+            animation-delay: 0s;
+        }
+
+        .ai-icon {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, #4dabf7, #339af0);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.3rem;
+        }
+
+        .ai-text h5 {
+            font-size: 0.85rem;
+            color: #fff;
+            margin-bottom: 0.2rem;
+        }
+
+        .ai-text p {
+            font-size: 0.75rem;
+            color: rgba(255, 255, 255, 0.4);
+        }
+
+        .stats-card {
+            bottom: 10%;
+            left: 5%;
+            width: 180px;
+            animation-delay: 1s;
+        }
+
+        .stats-header {
+            font-size: 0.8rem;
+            color: rgba(255, 255, 255, 0.6);
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+
+        .chart-mini {
+            display: flex;
+            align-items: flex-end;
+            gap: 0.4rem;
+            height: 50px;
+        }
+
+        .chart-bar {
+            flex: 1;
+            background: linear-gradient(to top, #4dabf7, #339af0);
+            border-radius: 4px;
+            animation: bar-grow 2s ease-in-out infinite;
+        }
+
+        .chart-bar:nth-child(1) { height: 50%; animation-delay: 0s; }
+        .chart-bar:nth-child(2) { height: 75%; animation-delay: 0.2s; }
+        .chart-bar:nth-child(3) { height: 60%; animation-delay: 0.4s; }
+        .chart-bar:nth-child(4) { height: 90%; animation-delay: 0.6s; }
+
+        .shield-card {
+            top: 8%;
+            left: 8%;
+            width: 100px;
+            height: 100px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            animation-delay: 2s;
+        }
+
+        .reaction-bubble {
+            position: absolute;
+            font-size: 2rem;
+            animation: float-bubble 4s ease-in-out infinite;
+            filter: drop-shadow(0 5px 15px rgba(0, 0, 0, 0.3));
+        }
+
+        .bubble-1 { top: 30%; right: 5%; animation-delay: 0s; }
+        .bubble-2 { bottom: 20%; right: 20%; animation-delay: 1.5s;  }
+        .bubble-3 { top: 60%; left: 5%; animation-delay: 3s; }
 
         /* Animations */
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
+        @keyframes blob-move {
+            0%, 100% { transform: translate(0, 0) scale(1); }
+            33% { transform: translate(30px, -50px) scale(1.1); }
+            66% { transform: translate(-20px, 20px) scale(0.9); }
+        }
+
+        @keyframes float-main {
+            0%, 100% { transform: translate(-50%, -50%) rotate(0deg); }
+            50% { transform: translate(-50%, -55%) rotate(-1deg); }
+        }
+
+        @keyframes float-slow {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-15px) rotate(2deg); }
+        }
+
+        @keyframes float-bubble {
+            0%, 100% {
+                transform: translateY(0px) scale(1);
+                opacity: 0.8;
             }
-            to {
+            50% {
+                transform: translateY(-20px) scale(1.1);
                 opacity: 1;
-                transform: translateY(0);
             }
+        }
+
+        @keyframes bar-grow {
+            0%, 100% { transform: scaleY(0.9); }
+            50% { transform: scaleY(1); }
         }
 
         /* Responsive */
-        @media (max-width: 768px) {
-            .hero h1 {
-                font-size: 2.5rem;
+        @media (max-width: 1024px) {
+            .hero {
+                grid-template-columns: 1fr;
+                padding: 5rem 2rem;
             }
 
-            .hero p {
+            .hero-content h1 {
+                font-size: 3.5rem;
+            }
+
+            .illustration {
+                margin-top: 4rem;
+                height: 550px;
+            }
+
+            .nav-menu {
+                display: none;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero-content h1 {
+                font-size: 2.8rem;
+            }
+
+            .hero-content p {
                 font-size: 1.1rem;
             }
 
-            .nav-links {
-                gap: 1rem;
+            .stats {
+                gap: 2rem;
             }
 
-            .cta-buttons {
+            .card-main {
+                width: 320px;
+            }
+
+            .cta-group {
                 flex-direction: column;
-                align-items: center;
+                width: 100%;
             }
 
             .btn {
                 width: 100%;
-                max-width: 300px;
+                justify-content: center;
             }
         }
     </style>
 </head>
 <body>
+    <!-- Background Blobs -->
+    <div class="bg-blob blob-1"></div>
+    <div class="bg-blob blob-2"></div>
+    <div class="bg-blob blob-3"></div>
+
     <!-- Navigation -->
     <nav>
         <div class="nav-container">
-            <a href="/" class="logo">🛡️ Intelligence Surveillance</a>
-            <ul class="nav-links">
+            <a href="/" class="logo">
+                <div class="logo-icon">🛡</div>
+                Intelligence Surveillance
+            </a>
+            <ul class="nav-menu">
                 <li><a href="/">Home</a></li>
-                <li><a href="/signup">Sign Up</a></li>
-                <li><a href="/login">Login</a></li>
+                <li><a href="#features">Features</a></li>
+                <li><a href="/about">About</a></li>
+                <li><a href="/docs">Docs</a></li>
+                <li><a href="/signup" class="nav-cta">Sign Up</a></li>
             </ul>
         </div>
     </nav>
@@ -246,58 +553,89 @@
     <!-- Hero Section -->
     <section class="hero">
         <div class="hero-content">
-            <h1>Safe Social Media for Everyone</h1>
-            <p>AI-powered content moderation that keeps your community safe, respectful, and enjoyable. Automatically detect and filter harmful content in real-time.</p>
-            <div class="cta-buttons">
-                <a href="/signup" class="btn btn-primary">Get Started</a>
-                <a href="#features" class="btn btn-secondary">Learn More</a>
+            <h1>
+                Keep your community <span class="gradient-text">safe & respectful</span>
+            </h1>
+            <p>
+                Intelligent content moderation powered by advanced AI. Automatically detect and filter harmful content before it reaches your users. Real-time protection that actually works.
+            </p>
+            <div class="cta-group">
+                <a href="/signup" class="btn btn-primary">
+                    Start Free Trial →
+                </a>
+                <a href="#demo" class="btn btn-secondary">
+                    Watch Demo
+                </a>
             </div>
-        </div>
-    </section>
-
-    <!-- Features Section -->
-    <section class="features" id="features">
-        <div class="features-container">
-            <h2>Why Choose Us?</h2>
-            <div class="features-grid">
-                <div class="feature-card">
-                    <div class="feature-icon">🤖</div>
-                    <h3>AI-Powered Detection</h3>
-                    <p>Advanced machine learning models automatically detect toxic, abusive, and harmful content across text, images, and videos.</p>
+            <div class="stats">
+                <div class="stat-item">
+                    <div class="stat-number">98.5%</div>
+                    <div class="stat-label">Accuracy Rate</div>
                 </div>
-                <div class="feature-card">
-                    <div class="feature-icon">⚡</div>
-                    <h3>Real-Time Moderation</h3>
-                    <p>Content is analyzed instantly as it's posted. Harmful content is flagged within seconds, keeping your community safe.</p>
+                <div class="stat-item">
+                    <div class="stat-number">&lt;2s</div>
+                    <div class="stat-label">Response Time</div>
                 </div>
-                <div class="feature-card">
-                    <div class="feature-icon">🌍</div>
-                    <h3>Multi-Language Support</h3>
-                    <p>Our AI understands context in multiple languages, detecting harmful content regardless of the language used.</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">🎯</div>
-                    <h3>Context-Aware</h3>
-                    <p>Smart algorithms understand context and slang, reducing false positives while catching actual threats.</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">📊</div>
-                    <h3>Admin Dashboard</h3>
-                    <p>Powerful moderation tools give admins full control with detailed analytics and review queues.</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">🔒</div>
-                    <h3>Privacy First</h3>
-                    <p>Your data is encrypted and secure. We never share user information with third parties.</p>
+                <div class="stat-item">
+                    <div class="stat-number">24/7</div>
+                    <div class="stat-label">Active Monitoring</div>
                 </div>
             </div>
         </div>
-    </section>
 
-    <!-- Footer -->
-    <footer>
-        <p>&copy; 2025 Intelligence Surveillance. All rights reserved.</p>
-        <p>Built with Django & AI for safer online communities.</p>
-    </footer>
+        <div class="illustration">
+            <!-- Reaction Bubbles -->
+            <div class="reaction-bubble bubble-1">❤️</div>
+            <div class="reaction-bubble bubble-2">👍</div>
+            <div class="reaction-bubble bubble-3">😊</div>
+
+            <!-- Shield Icon -->
+            <div class="mini-card shield-card">
+                🛡️
+            </div>
+
+            <!-- AI Badge -->
+            <div class="mini-card ai-badge">
+                <div class="ai-icon">🤖</div>
+                <div class="ai-text">
+                    <h5>AI Active</h5>
+                    <p>Analyzing...</p>
+                </div>
+            </div>
+
+            <!-- Main Content Card -->
+            <div class="mockup-card card-main">
+                <div class="post-header">
+                    <div class="user-avatar">👤</div>
+                    <div class="user-details">
+                        <h4>Community Post</h4>
+                        <span>Just now · Public</span>
+                    </div>
+                </div>
+                <div class="post-body">
+                    <p class="post-text">
+                        Hey everyone! Just wanted to share this awesome experience I had today. The weather is beautiful! 🌞
+                    </p>
+                    <span class="badge badge-safe">✓ Content Approved</span>
+                </div>
+                <div class="post-actions">
+                    <div class="action-btn">👍 Like</div>
+                    <div class="action-btn">💬 Comment</div>
+                    <div class="action-btn">↗️ Share</div>
+                </div>
+            </div>
+
+            <!-- Stats Card -->
+            <div class="mini-card stats-card">
+                <div class="stats-header">📊 Today's Activity</div>
+                <div class="chart-mini">
+                    <div class="chart-bar"></div>
+                    <div class="chart-bar"></div>
+                    <div class="chart-bar"></div>
+                    <div class="chart-bar"></div>
+                </div>
+            </div>
+        </div>
+    </section>
 </body>
 </html>
